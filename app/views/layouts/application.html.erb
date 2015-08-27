@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Documentation</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrapper">
+  <div id="header">
+    <div id = "content">
+        <h1>Welcome to my Site</h1>
+    </div>
+    <% if current_user.present? %>
+    <div id="menu">
+        <menu>
+          <ul>
+            <% menu = Menu.where(access: current_user.role).where(parent_id: 0) %>
+            <% if menu.present? %>
+              <% menu.order("sequence_number").each do |lists| %>
+                <li>
+                  <%= link_to lists.title, :controller => lists.controller, :action => lists.action %>
+                  <% id = lists.id %>
+                  <% submenu = Menu.where(parent_id: id )%>
+                  <% if submenu.present? %>
+                      <% submenu.order("sequence_number").each do |sublists| %>
+                        <ul>
+                            <li>
+                                <%= link_to sublists.title, :controller => sublists.controller, :action => sublists.action %>
+                            </li>
+                        </ul>
+                      <% end %>
+                  <% end %>
+                </li>
+              <%end%>
+            <%end%>
+          </ul>
+        </menu>
+  </div>
+        <% end %>
+  </div>
+  <%= yield %>
+
+</div>
+</body>
+</html>
