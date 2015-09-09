@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
+  root 'articles#index'
+
+  #get 'menu/new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
+  #get "menu" => "home/create_menu", :as => "menu"
 
   #get "sign_up" => "users#new", :as => "sign_up"
   #root :to => "users#new"
@@ -16,6 +21,8 @@ Rails.application.routes.draw do
   #resources :users
   resources :sessions
   resources :home
+  resources :menu
+  resources :articles
 
   ##########################################
 

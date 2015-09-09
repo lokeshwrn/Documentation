@@ -24,14 +24,9 @@ a{
 p{
     font-size: 14px;
 }
-.example{
-    background-color: lightgray;
-    border:1px solid black
-    border-right:5px solid blue;
-}
 #wrapper{
     width:1024px;
-    background-color: #eeeeee;
+    background-color: #ffffff;
     margin:0px auto;
     overflow:hidden;
     min-height: 750px;
@@ -40,6 +35,6 @@ p{
     width:100%;
     float:left;
 }
-#menu{
-    position: relative;
+body{
+    background-color:#eeeeee;
 }

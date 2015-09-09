@@ -1,3 +1,6 @@
+#menu{
+    position: relative;
+}
 .one, .two {
     margin-top:50px;
     float:left;
