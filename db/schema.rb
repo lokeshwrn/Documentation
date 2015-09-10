@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(version: 20150904065645) do
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.string   "role",          default: "user"
+    t.string   "role",          default: "users"
     t.boolean  "status",        default: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
 end
