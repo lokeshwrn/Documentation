@@ -19,10 +19,8 @@ Rails.application.routes.draw do
   ##########################################
 
   #resources :users
-  resources :sessions
-  resources :home
-  resources :menu
-  resources :articles
+  #resources :sessions
+  resources :menu, :articles
 
   ##########################################
 

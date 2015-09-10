@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   skip_before_action :require_login, only: [:index]
 
   def index
-    @articles = Article.all.order(:rating)
+    @articles = Article.all.order(rating: :desc)
   end
 
   def new
