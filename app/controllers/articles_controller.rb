@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
   skip_before_action :require_login, only: [:index]
 
   def index
-    debugger
     @articles = Article.all.order(:rating)
   end
 
