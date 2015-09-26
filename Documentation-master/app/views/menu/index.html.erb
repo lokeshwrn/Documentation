@@ -1,0 +1,38 @@
+<style>
+    table{
+        margin:0px auto;
+        margin-top:30px;
+    }
+    td{
+        padding:5px;
+    }
+</style>
+
+<% col = %w(id title parent_id status access alias_name controller action sequence_number) %>
+<h3>Menu Database List</h3>
+<div class="form_container_right">
+<table border=1px cellspacing=0px>
+  <tr>
+    <% col.each do |column| %>
+        <td>
+          <%= column %>
+        </td>
+    <% end %>
+    <td>Edit</td>
+  </tr>
+
+  <% @menu.each do |row| %>
+      <tr>
+        <% cell = row.attributes.slice(*col).values %>
+        <% cell.each do |cel| %>
+            <td><%= cel %></td>
+        <% end %>
+        <td>
+          <%= link_to 'edit', edit_menu_path(cell[0]) %>cd
+        </td>
+      </tr>
+  <% end %>
+
+</table>
+</div>
+<%= will_paginate @menu %>

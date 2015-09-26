@@ -1,0 +1,31 @@
+<style>
+  #one {
+      width: 45.8%;
+      height: 150px;
+      border: 1px solid black;
+      border-radius: 10px;
+      margin: 2% 1% 0%;
+      padding: 1%;
+      float: left;
+  }
+  .article_title {
+      height: 50px;
+  }
+
+</style>
+
+  <% @articles.each do |a| %>
+    <div id = "one">
+      <div class="article">
+        <div class="article_title" align="center">
+          <h2><%= "#{a.id}" + " - " + "#{a.title}" %></h2>
+          <h4><%= a.description %></h4>
+        </div>
+        <hr>
+        <div class="article_content" align="center">
+          <p><%= a.content %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+

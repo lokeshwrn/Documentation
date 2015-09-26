@@ -1,5 +1,5 @@
 class MenuController < ApplicationController
-  skip_before_action :require_login, except: [:destroy]
+  # skip_before_action :require_login, except: [:destroy]
 
   def index
     @menu = Menu.paginate(:page => params[:page], :per_page => 10)

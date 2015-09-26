@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904065645) do
+ActiveRecord::Schema.define(version: 20150925195613) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150904065645) do
     t.integer  "rating",         default: 0
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "category"
   end
 
   create_table "menus", force: :cascade do |t|

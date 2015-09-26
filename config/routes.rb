@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get "articles/index" => "articles#index"
   root 'articles#index'
 
   #get 'menu/new'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
 
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
+  match "sign_up" => "users#new", :via => [:get]
   #get "menu" => "home/create_menu", :as => "menu"
 
   #get "sign_up" => "users#new", :as => "sign_up"
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
   #resources :users
   #resources :sessions
-  resources :menu, :articles
+#  resources :menu, :articles
 
   ##########################################
 

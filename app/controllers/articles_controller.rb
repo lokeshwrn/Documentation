@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   # skip_before_action :require_login, except: [:destroy]
-  skip_before_action :require_login, only: [:index]
+  # skip_before_action :require_login, only: [:index]
 
   def index
     @articles = Article.all.order(rating: :desc)

@@ -1,31 +1,73 @@
 <style>
-  #one {
-      width: 45.8%;
-      height: 150px;
-      border: 1px solid black;
-      border-radius: 10px;
-      margin: 2% 1% 0%;
-      padding: 1%;
+  .article{
+      width: 28%;
+      float: left;
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid white;
+  }
+  .article:hover{
+      border:1px solid black;
+  }
+  .head{
+      width: 100%;
+      float: left;
+
+  }
+  .title{
+      width: 65%;
+      border-bottom: 1px solid black;
+      padding: 2%;
+      margin: 2%;
+      float: left;
+      /*border: 1px solid red;*/
+  }
+  .rating{
+      width: 22%;
+      float: left;
+      color:green;
+      padding: 5% 2%;
+      margin: 2%;
+      box-sizing: border-box;
+  }
+  .content{
+      height: 68px;
+      overflow: hidden;
       float: left;
   }
-  .article_title {
-      height: 50px;
+  .fa-star{
+      color:cornflowerblue;
+  }
+  .fa-star-o{
+      color:black;
   }
 
+  a:hover{
+      color: cornflowerblue;
+  }
 </style>
-
   <% @articles.each do |a| %>
-    <div id = "one">
-      <div class="article">
-        <div class="article_title" align="center">
-          <h2><%= "#{a.id}" + " - " + "#{a.title}" %></h2>
-          <h4><%= a.description %></h4>
-        </div>
-        <hr>
-        <div class="article_content" align="center">
-          <p><%= a.content %></p>
-        </div>
+
+    <div class="article">
+      <div class="head">
+      <div class="title">
+        <span><a href="#"><h2><%= a.title.upcase %></h2></a></span>
+        <span><h6>By <%= a.user.user_name.upcase%> | <%= a.comments_count%> Comments</h6></span>
+      </div>
+
+      <div class="rating" align="center">
+        <%(1..(a.rating)).each do |q|%>
+          <span><i class="fa fa-star"></i></span>
+        <%end%>
+        <%(1..(5-a.rating)).each do |q|%>
+          <span><i class="fa fa-star-o"></i></span>
+        <%end%>
+      </div>
+
+      </div>
+      <div class="content">
+        <p><%= a.description%></p>
       </div>
     </div>
-  <% end %>
 
+  <% end %>
