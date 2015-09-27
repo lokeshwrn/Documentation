@@ -4,6 +4,7 @@ class Export
     @data = model.order(:id)
     all_values=[]
     all_values.push model.column_names.slice(*col_names).values
+    # logger.info all_values
     model.all.each do |datas|
       all_values.push datas.attributes.values
     end
@@ -16,7 +17,6 @@ class Export
       end
       col_index+=1
     end
-
   end
 
   def self.all_models
@@ -29,20 +29,19 @@ class Export
 
     get_val(worksheet, Menu, col_name)
 
-    worksheet = workbook.add_worksheet('Articles')
-    8,9
-    col_name = %w(id title description content user_id status reference_url github_url comments_count rating)
-    get_val(worksheet, Article,col_name)
-
-    worksheet = workbook.add_worksheet('User')
-    col_name = %w(id user_name email password_hash password_salt role status)
-    get_val(worksheet, User,col_name)
+    # worksheet = workbook.add_worksheet('Articles')
+    #
+    # col_name = %w(id title description content user_id status reference_url github_url comments_count rating)
+    # get_val(worksheet, Article,col_name)
+    #
+    # worksheet = workbook.add_worksheet('User')
+    # col_name = %w(id user_name email password_hash password_salt role status)
+    # get_val(worksheet, User,col_name)
 
     workbook.write("#{Rails.root}/public/export.xlsx")
 
   end
 end
-
 
 
 #values = foo.attributes.slice(*attributes).values
