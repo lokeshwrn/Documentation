@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   #resources :users
   #resources :sessions
-#  resources :menu, :articles
+  resources :menu, :articles
 
   ##########################################
 

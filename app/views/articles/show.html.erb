@@ -1,1 +1,38 @@
-<h1><%= @article.title %></h1>
+<style>
+  .main{
+      width: 48%;
+      float: left;
+  }
+  .others{
+      width: 48%;
+      float: right;
+  }
+  .title{
+      width:100%;
+  }
+  .desc{
+      width: 100%;
+  }
+  .content{
+      width: 90%;
+      float: left;
+  }
+  p{
+      font-size: 18px;
+  }
+</style>
+<div class="main">
+    <div class="title">
+        <h2><%= @article.title.upcase %></h2>
+    </div>
+    <div class="desc">
+        <h3><%= @article.description%></h3><br>
+    </div>
+</div>
+<div class="others">
+  <h5><%= @article.github_url%></h5>
+  <h5><%= @article.reference_url%></h5>
+</div>
+<div class="content">
+    <p><%= @article.content%></p>
+</div>
