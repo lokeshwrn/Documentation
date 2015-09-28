@@ -10,10 +10,15 @@ class Import
         worksheet = sheet
         worksheet.get_table[:table].each do |row|
           existing_record = (sheet.sheet_name.constantize).find_by_id(row["id"])
-          record = JSON.parse(existing_record.to_json)
-          record.delete("created_at")
-          record.delete("updated_at")
-          (record.has_key? "status" ) ? (record["status"]=record["status"].to_s) : nil
+
+          if existing_record.present?
+            record = JSON.parse(existing_record.to_json)
+            record.delete("created_at")
+            record.delete("updated_at")
+            (record.has_key? "status" ) ? (record["status"]=record["status"].to_s) : nil
+          else
+            record={}
+          end
           if record == row
             nil
           else
