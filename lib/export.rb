@@ -1,12 +1,14 @@
 class Export
 
-  def self.get_val(worksheet, model, col_names)
-    @data = model.order(:id)
+  def self.get_val(worksheet, model)
+
     all_values=[]
-    all_values.push model.column_names.slice(*col_names).values
-    # logger.info all_values
+    attributes = model.column_names
+    attributes.delete("created_at")
+    attributes.delete("updated_at")
+    all_values.push attributes
     model.all.each do |datas|
-      all_values.push datas.attributes.values
+      all_values.push datas.attributes.slice(*attributes).values
     end
     col_index = 0
     all_values.each do |row|
@@ -21,27 +23,23 @@ class Export
 
   def self.all_models
 
-    col_name = %w(created_at updated_at)
-
     workbook = RubyXL::Workbook.new
     worksheet=workbook[0]
     worksheet.sheet_name = 'Menu'
 
-    get_val(worksheet, Menu, col_name)
+    ary=["Menu", "Article","User"]
 
-    # worksheet = workbook.add_worksheet('Articles')
-    #
-    # col_name = %w(id title description content user_id status reference_url github_url comments_count rating)
-    # get_val(worksheet, Article,col_name)
-    #
-    # worksheet = workbook.add_worksheet('User')
-    # col_name = %w(id user_name email password_hash password_salt role status)
-    # get_val(worksheet, User,col_name)
+    ary.each do |w|
 
-    workbook.write("#{Rails.root}/public/export.xlsx")
+      if w != "Menu"
+        worksheet = workbook.add_worksheet(w)
+      end
+
+      val=w.constantize
+      get_val(worksheet, val)
+    end
+
+    workbook.write("#{Rails.root}/public/models.xlsx")
 
   end
 end
-
-
-#values = foo.attributes.slice(*attributes).values
